@@ -1,0 +1,63 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+.gmnoprint a,
+.gmnoprint span {
+  display: none;
+}
+
+.gmnoprint div {
+  background: none !important;
+}
+
+.loader {
+  opacity: 0;
+  animation: fade 0.4s easy-in forward;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+}
