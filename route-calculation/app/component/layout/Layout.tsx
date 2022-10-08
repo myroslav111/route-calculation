@@ -29,15 +29,11 @@ const Layout: FC<ILayout> = ({ children, title }) => {
   return (
     <div>
       <Head>
-        <title>{title} Route calculation </title>
+        <title>{title} </title>
         <meta name="description" content="route calculation" />
         <link rel="shortcut icon" href={FavIcon.src} type="image/png" />
       </Head>
 
-      {/* <Script
-        strategy="beforeInteractive"
-        src={`https://maps.gooleapis.com/maps/api/js?key=AIzaSyADvTDrOIC3ZkHqjuMMs84jKt93KDoFitQ&libraries=places`}
-      /> */}
       <Script
         strategy="beforeInteractive"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADvTDrOIC3ZkHqjuMMs84jKt93KDoFitQ&libraries=places"

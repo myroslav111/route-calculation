@@ -15,19 +15,19 @@ interface IInputPlaces {
 const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
   const [address, setAddress] = useState('');
   const [value, setValue] = useState('');
-  //   const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  //   const setFocus = () => inputRef?.current?.focus();
+  const setFocus = () => inputRef?.current?.focus();
 
   const isFrom = type === 'from';
 
-  //   useEffect(() => {
-  //     if (isFrom) setFocus;
-  //   }, [isFrom]);
+  useEffect(() => {
+    if (isFrom) setFocus;
+  }, [isFrom]);
 
-  //   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-  //     setValue(e.target.value);
-  //   };
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setValue(e.target.value);
+  };
 
   const handleSelect = (address: string) => {
     geocodeByAddress(address)
@@ -42,7 +42,6 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
   return (
     <PlacesAutocomplete
       value={address}
-      // onChange={handleChange}
       onSelect={handleSelect}
       onChange={setAddress}
       onError={err => console.log('Error', err)}
@@ -50,6 +49,7 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div className={isFrom ? styles.wrapp : styles.marginBottom}>
           <div
+            key={Math.random()}
             className={styles.subWrapp}
             style={
               suggestions.length
@@ -68,7 +68,7 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
             <input
               className={styles.input}
               {...getInputProps({
-                // ref: inputRef,
+                ref: inputRef,
                 placeholder: isFrom ? 'Where from?' : 'Where to?',
               })}
             />
@@ -81,7 +81,10 @@ const InputPlaces: FC<IInputPlaces> = ({ cbSuccess, type }) => {
           >
             {loading && <div>Loading...</div>}
             {suggestions.map((suggestions, idx) => (
-              <div {...getSuggestionItemProps(suggestions, {})}>
+              <div
+                className={styles.suggestions}
+                {...getSuggestionItemProps(suggestions, {})}
+              >
                 <span>{suggestions.description}</span>
               </div>
             ))}
